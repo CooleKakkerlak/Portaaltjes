@@ -11,6 +11,12 @@ public class MPlayer : NetworkBehaviour
         ReadPermission = NetworkVariablePermission.Everyone
     });
 
+    public NetworkVariableQuaternion Rotation = new NetworkVariableQuaternion(new NetworkVariableSettings
+    {
+        WritePermission = NetworkVariablePermission.ServerOnly,
+        ReadPermission = NetworkVariablePermission.Everyone
+    });
+
     [ClientRpc]
     void TestClientRpc()
     {
@@ -21,11 +27,12 @@ public class MPlayer : NetworkBehaviour
     }
 
     [ServerRpc]
-    void TestServerRpc(Vector3 value)
+    void UpdServerRpc(Vector3 pos, Quaternion rot)
     {
         if (IsServer)
         {
-            Position.Value = value;
+            Position.Value = pos;
+            Rotation.Value = rot;
         }
     }
 
@@ -33,13 +40,13 @@ public class MPlayer : NetworkBehaviour
     {
         if (!IsLocalPlayer)
         {
-            //GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
             GetComponent<FPSController>().enabled = false;
             GetComponent<CharacterController>().enabled = false;
             GetComponent<HandControl>().enabled = false;
-
-            //Destroy(transform.Find("FirstPersonCharacter").gameObject);
             Destroy(transform.Find("cam").gameObject);
+            // Old character
+            //GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
+            //Destroy(transform.Find("FirstPersonCharacter").gameObject);
         }
     }
 
@@ -48,10 +55,11 @@ public class MPlayer : NetworkBehaviour
         if (!IsLocalPlayer)
         {
             transform.position = Position.Value;
+            transform.rotation = Rotation.Value;
         }
         else
         {
-            TestServerRpc(transform.position);
+            UpdServerRpc(transform.position, transform.rotation);
         }
     }
 }
