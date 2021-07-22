@@ -1,7 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using MLAPI;
+using MLAPI.Messaging;
+using MLAPI.NetworkVariable;
 
-public class PortalTraveller : MonoBehaviour {
+public class PortalTraveller : NetworkBehaviour
+{
 
     public GameObject graphicsObject;
     public GameObject graphicsClone { get; set; }
