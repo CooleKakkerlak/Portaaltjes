@@ -27,7 +27,7 @@ public class WeaponScript : MonoBehaviour
         if (otherObject.CompareTag("Hittable") )
         {
             var nid = otherObject.GetComponentInParent<MPlayer>().NetworkObjectId;
-            // Debug.Log($"NID: {nid}");
+            Debug.Log($"NID: {nid}");
             m_player.OnSlap(nid);
         }
     }

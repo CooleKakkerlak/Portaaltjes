@@ -64,6 +64,7 @@ public class MPlayer : PortalTraveller
         if (!IsLocalPlayer)
             return;
         
+        OnSlapServerRpc(networkId);
     }
     
     [ClientRpc]
