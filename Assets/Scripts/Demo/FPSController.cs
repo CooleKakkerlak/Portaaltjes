@@ -72,7 +72,7 @@ public class FPSController : PortalTraveller {
 
         float currentSpeed = (Input.GetKey (KeyCode.LeftShift)) ? runSpeed : walkSpeed;
         Vector3 targetVelocity = worldInputDir * currentSpeed;
-        if(worldInputDir.magnitude > 0)
+        if(worldInputDir.magnitude > 0 && controller.isGrounded)
         {
             if (currentSpeed == walkSpeed)
             {
