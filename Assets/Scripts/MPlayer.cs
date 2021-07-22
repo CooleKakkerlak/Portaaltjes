@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class MPlayer : PortalTraveller
 {
+    public GameObject Hand;
+    public bool IsTikker = true;
+
+
     public NetworkVariableVector3 Position = new NetworkVariableVector3(new NetworkVariableSettings
     {
         WritePermission = NetworkVariablePermission.ServerOnly,
@@ -52,6 +56,7 @@ public class MPlayer : PortalTraveller
 
     void Update()
     {
+        Hand.SetActive(IsTikker);
         if (!IsLocalPlayer)
         {
             transform.position = Position.Value;

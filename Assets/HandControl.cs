@@ -9,7 +9,6 @@ using MLAPI.NetworkVariable;
 public class HandControl :  NetworkBehaviour
 {
     public GameObject handObject;
-    public bool isPlayer = false;
     private Animation m_handObjectAnim;
 
     // Start is called before the first frame update

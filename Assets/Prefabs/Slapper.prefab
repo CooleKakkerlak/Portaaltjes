@@ -1879,7 +1879,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handObject: {fileID: 5330915644854551253}
-  isPlayer: 0
 --- !u!114 &6898780974808717069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1910,6 +1909,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graphicsObject: {fileID: 5330915645462635227}
+  Hand: {fileID: 5330915644854551253}
+  IsTikker: 1
   Position:
     m_InternalValue: {x: 0, y: 0, z: 0}
   Rotation:
