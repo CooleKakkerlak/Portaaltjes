@@ -37,7 +37,6 @@ public class PortalConnector : MonoBehaviour
             i--;
 
             Debug.Log("connecting " + p1.gameObject.name + " to " +  p2.gameObject.name);
-            p1.ConnectToPortal(p2);
         }
     }
 }
