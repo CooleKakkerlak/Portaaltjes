@@ -8,6 +8,7 @@ public class WeaponScript : MonoBehaviour
     public GameObject hand;
     private Animation anim;
     private Collider col;
+    public MPlayer m_player;
 
     private void Start()
     {
@@ -26,6 +27,9 @@ public class WeaponScript : MonoBehaviour
         if (otherObject.CompareTag("Hittable") )
         {
             Debug.Log("Auch");
+            var nid = otherObject.GetComponentInParent<MPlayer>().NetworkObjectId;
+            Debug.Log($"NID: {nid}");
+            m_player.OnSlap(nid);
         }
     }
 }

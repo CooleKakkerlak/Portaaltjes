@@ -38,7 +38,7 @@ public class MPlayer : PortalTraveller
             GetComponent<CharacterController>().enabled = false;
             GetComponent<HandControl>().enabled = false;
             Destroy(transform.Find("cam").gameObject);
-            transform.Find("soldier").tag = "Hittable";
+            transform.Find("Soldier").tag = "Hittable";
             // Old character
             //GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
             //Destroy(transform.Find("FirstPersonCharacter").gameObject);
@@ -57,5 +57,12 @@ public class MPlayer : PortalTraveller
         {
             UpdServerRpc(transform.position, transform.rotation);
         }
+    }
+
+    public void OnSlap(ulong networkId)
+    {
+        if (!IsLocalPlayer)
+            return;
+        
     }
 }
