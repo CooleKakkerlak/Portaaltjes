@@ -3,7 +3,7 @@ using MLAPI.Messaging;
 using MLAPI.NetworkVariable;
 using UnityEngine;
 
-public class MPlayer : NetworkBehaviour
+public class MPlayer : PortalTraveller
 {
     public NetworkVariableVector3 Position = new NetworkVariableVector3(new NetworkVariableSettings
     {

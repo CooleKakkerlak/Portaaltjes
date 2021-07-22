@@ -69,6 +69,15 @@ public class Portal : MonoBehaviour {
         }
     }
 
+    public Camera getPlayerCam()
+    {
+        if (playerCam == null)
+        {
+            playerCam = Camera.main;
+        }
+        return playerCam;
+    }
+
     // Manually render the camera attached to this portal
     // Called after PrePortalRender, and before PostPortalRender
     public void Render () {
@@ -80,7 +89,7 @@ public class Portal : MonoBehaviour {
 
         CreateViewTexture ();
 
-        var localToWorldMatrix = playerCam.transform.localToWorldMatrix;
+        var localToWorldMatrix = getPlayerCam().transform.localToWorldMatrix;
         var renderPositions = new Vector3[recursionLimit];
         var renderRotations = new Quaternion[recursionLimit];
 
@@ -180,7 +189,7 @@ public class Portal : MonoBehaviour {
         foreach (var traveller in trackedTravellers) {
             UpdateSliceParams (traveller);
         }
-        ProtectScreenFromClipping (playerCam.transform.position);
+        ProtectScreenFromClipping (getPlayerCam().transform.position);
     }
     void CreateViewTexture () {
         if (viewTexture == null || viewTexture.width != Screen.width || viewTexture.height != Screen.height) {
@@ -197,9 +206,9 @@ public class Portal : MonoBehaviour {
 
     // Sets the thickness of the portal screen so as not to clip with camera near plane when player goes through
     float ProtectScreenFromClipping (Vector3 viewPoint) {
-        float halfHeight = playerCam.nearClipPlane * Mathf.Tan (playerCam.fieldOfView * 0.5f * Mathf.Deg2Rad);
-        float halfWidth = halfHeight * playerCam.aspect;
-        float dstToNearClipPlaneCorner = new Vector3 (halfWidth, halfHeight, playerCam.nearClipPlane).magnitude;
+        float halfHeight = getPlayerCam().nearClipPlane * Mathf.Tan (getPlayerCam().fieldOfView * 0.5f * Mathf.Deg2Rad);
+        float halfWidth = halfHeight * getPlayerCam().aspect;
+        float dstToNearClipPlaneCorner = new Vector3 (halfWidth, halfHeight, getPlayerCam().nearClipPlane).magnitude;
         float screenThickness = dstToNearClipPlaneCorner;
 
         Transform screenT = screen.transform;
@@ -224,11 +233,11 @@ public class Portal : MonoBehaviour {
         float cloneSliceOffsetDst = 0;
         float screenThickness = screen.transform.localScale.z;
 
-        bool playerSameSideAsTraveller = SameSideOfPortal (playerCam.transform.position, traveller.transform.position);
+        bool playerSameSideAsTraveller = SameSideOfPortal (getPlayerCam().transform.position, traveller.transform.position);
         if (!playerSameSideAsTraveller) {
             sliceOffsetDst = -screenThickness;
         }
-        bool playerSameSideAsCloneAppearing = side != linkedPortal.SideOfPortal (playerCam.transform.position);
+        bool playerSameSideAsCloneAppearing = side != linkedPortal.SideOfPortal (getPlayerCam().transform.position);
         if (!playerSameSideAsCloneAppearing) {
             cloneSliceOffsetDst = -screenThickness;
         }
