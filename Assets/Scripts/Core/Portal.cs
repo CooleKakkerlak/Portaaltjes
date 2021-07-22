@@ -74,9 +74,9 @@ public class Portal : MonoBehaviour {
     public void Render () {
 
         // Skip rendering the view from this portal if player is not looking at the linked portal
-        if (!CameraUtility.VisibleFromCamera (linkedPortal.screen, playerCam)) {
+        /*if (!CameraUtility.VisibleFromCamera (linkedPortal.screen, playerCam)) {
             return;
-        }
+        }*/
 
         CreateViewTexture ();
 
@@ -87,12 +87,12 @@ public class Portal : MonoBehaviour {
         int startIndex = 0;
         portalCam.projectionMatrix = playerCam.projectionMatrix;
         for (int i = 0; i < recursionLimit; i++) {
-            if (i > 0) {
+            /*if (i > 0) {
                 // No need for recursive rendering if linked portal is not visible through this portal
                 if (!CameraUtility.BoundsOverlap (screenMeshFilter, linkedPortal.screenMeshFilter, portalCam)) {
                     break;
                 }
-            }
+            }*/
             localToWorldMatrix = transform.localToWorldMatrix * linkedPortal.transform.worldToLocalMatrix * localToWorldMatrix;
             int renderOrderIndex = recursionLimit - i - 1;
             renderPositions[renderOrderIndex] = localToWorldMatrix.GetColumn (3);
@@ -109,7 +109,7 @@ public class Portal : MonoBehaviour {
         for (int i = startIndex; i < recursionLimit; i++) {
             portalCam.transform.SetPositionAndRotation (renderPositions[i], renderRotations[i]);
             SetNearClipPlane ();
-            HandleClipping ();
+            HandleClipping  ();
             portalCam.Render ();
 
             if (i == startIndex) {

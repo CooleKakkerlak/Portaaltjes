@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class FPSController : PortalTraveller {
 
-    public float walkSpeed = 3;
-    public float runSpeed = 6;
-    public float smoothMoveTime = 0.1f;
+    public float walkSpeed = 1f;
+    public float runSpeed = 2;
+    public float smoothMoveTime = 0.075f;
     public float jumpForce = 8;
     public float gravity = 18;
 
@@ -72,6 +72,22 @@ public class FPSController : PortalTraveller {
 
         float currentSpeed = (Input.GetKey (KeyCode.LeftShift)) ? runSpeed : walkSpeed;
         Vector3 targetVelocity = worldInputDir * currentSpeed;
+        if(worldInputDir.magnitude > 0)
+        {
+            if (currentSpeed == walkSpeed)
+            {
+                transform.GetComponent<Actions>().Walk();
+            }
+            else if (currentSpeed == runSpeed)
+            {
+                transform.GetComponent<Actions>().Run();
+            }            
+        }
+        else
+        {
+            transform.GetComponent<Actions>().Stay();
+        }
+
         velocity = Vector3.SmoothDamp (velocity, targetVelocity, ref smoothV, smoothMoveTime);
 
         verticalVelocity -= gravity * Time.deltaTime;
@@ -87,8 +103,9 @@ public class FPSController : PortalTraveller {
         if (Input.GetKeyDown (KeyCode.Space)) {
             float timeSinceLastTouchedGround = Time.time - lastGroundedTime;
             if (controller.isGrounded || (!jumping && timeSinceLastTouchedGround < 0.15f)) {
+                transform.GetComponent<Actions>().Jump();
                 jumping = true;
-                verticalVelocity = jumpForce;
+                verticalVelocity = jumpForce;                
             }
         }
 
