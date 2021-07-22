@@ -34,7 +34,10 @@ public class MPlayer : NetworkBehaviour
         if (!IsLocalPlayer)
         {
             GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
+            GetComponent<FPSController>().enabled = false;
+            GetComponent<CharacterController>().enabled = false;
             Destroy(transform.Find("FirstPersonCharacter").gameObject);
+            Destroy(transform.Find("cam").gameObject);
         }
     }
 

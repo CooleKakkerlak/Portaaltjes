@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class WeaponScript : MonoBehaviour
 {
+    public GameObject hand;
     private Animation anim;
     private Collider col;
 
     private void Start()
     {
-        anim = GetComponent<Animation>();
+        anim = hand.GetComponent<Animation>();
         col = GetComponent<Collider>();
     }
 
