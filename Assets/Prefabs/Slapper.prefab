@@ -1854,7 +1854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d6a5ccf8889c4d978067bb5dc639458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  graphicsObject: {fileID: 0}
+  graphicsObject: {fileID: 5330915645462635227}
   walkSpeed: 3
   runSpeed: 6
   smoothMoveTime: 0.1
@@ -1879,6 +1879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handObject: {fileID: 5330915644854551253}
+  isPlayer: 0
 --- !u!114 &6898780974808717069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1908,8 +1909,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c11465f442160b47b7563f58c1c21f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  graphicsObject: {fileID: 5330915645462635227}
   Position:
     m_InternalValue: {x: 0, y: 0, z: 0}
+  Rotation:
+    m_InternalValue: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1001 &5330915643954970417
 PrefabInstance:
   m_ObjectHideFlags: 0
