@@ -69,6 +69,8 @@ public class MPlayer : PortalTraveller
     [ClientRpc]
     void OnSlapClientRpc(ulong nid)
     {
+        Debug.Log($"Client NID: {nid}");
+
         if (IsClient && IsLocalPlayer && NetworkObjectId == nid)
         {
             IsTikker = true;
@@ -82,8 +84,10 @@ public class MPlayer : PortalTraveller
     [ServerRpc]
     void OnSlapServerRpc(ulong nid)
     {
+        Debug.Log($"NID: {nid}");
         if (IsServer)
         {
+            Debug.Log($"Server NID: {nid}");
            OnSlapClientRpc(nid);
         }
     }
