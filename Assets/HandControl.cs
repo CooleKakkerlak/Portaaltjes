@@ -19,11 +19,14 @@ public class HandControl :  NetworkBehaviour
     }
     
     [ClientRpc]
-    void SlapClientRpc()
+    void SlapClientRpc(int value)
     {
+        Debug.Log("zzzzzaazzz");
         if (IsClient && !IsLocalPlayer)
         {
-            m_handObjectAnim.Play();
+            Debug.Log("zzzzzz");
+           // m_handObjectAnim.Play();
+            Debug.Log("aaaaaa");
         }
     }
 
@@ -32,7 +35,9 @@ public class HandControl :  NetworkBehaviour
     {
         if (IsServer)
         {
-            SlapClientRpc();
+            Debug.Log("aaaabbb");
+           SlapClientRpc(1);
+            Debug.Log("AAAAA");
         }
     }
 
@@ -42,7 +47,9 @@ public class HandControl :  NetworkBehaviour
         if (Input.GetMouseButtonDown(0) && IsLocalPlayer)
         {
             m_handObjectAnim.Play();
+            Debug.Log("bbbbbb");
             SlapServerRpc();
+            Debug.Log("cccccc");
         }
     }
 }
