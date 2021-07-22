@@ -83,6 +83,11 @@ public class MPlayer : PortalTraveller
             IsTikker = NetworkObjectId == nid;
             Debug.Log($"(Server) Slapped NID: {nid}, Self: {NetworkObjectId}");
             OnSlapClientRpc(nid);
+
+            foreach(var p in (FindObjectsOfType(typeof(MPlayer)) as MPlayer[]))
+            {
+                p.OnSlapClientRpc(nid);
+            }
         }
     }
 }

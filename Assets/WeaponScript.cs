@@ -30,7 +30,6 @@ public class WeaponScript : MonoBehaviour
             var nid = otherPlayer.NetworkObjectId;
             Debug.Log($"NID: {nid}");
             m_player.OnSlap(nid);
-            otherPlayer.OnSlap(nid);
         }
     }
 }
