@@ -214,7 +214,7 @@ Transform:
   m_GameObject: {fileID: 141824507}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -612,7 +612,7 @@ MonoBehaviour:
     - ErCo
     AllowRuntimeSceneChanges: 0
     NetworkPrefabs:
-    - Prefab: {fileID: 6411672270076968161, guid: 3df0ead568eca24499968683eeb3795a,
+    - Prefab: {fileID: 5330915645462635297, guid: 11bfe8977bb8ab447b14d5176136f3a9,
         type: 3}
       PlayerPrefab: 1
     PlayerPrefabHash:
