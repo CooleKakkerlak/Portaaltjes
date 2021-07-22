@@ -17,15 +17,6 @@ public class MPlayer : PortalTraveller
         ReadPermission = NetworkVariablePermission.Everyone
     });
 
-    [ClientRpc]
-    void TestClientRpc()
-    {
-        if (IsClient && !IsLocalPlayer)
-        {
-            transform.position = Position.Value;
-        }
-    }
-
     [ServerRpc]
     void UpdServerRpc(Vector3 pos, Quaternion rot)
     {
@@ -54,8 +45,8 @@ public class MPlayer : PortalTraveller
     {
         if (!IsLocalPlayer)
         {
-            transform.position = Position.Value;
-            transform.rotation = Rotation.Value;
+            transform.position = Vector3.Lerp(Position.Value, transform.position, 0.8f);
+            transform.rotation = Quaternion.Lerp(Rotation.Value, transform.rotation, 0.9f);
         }
         else
         {
