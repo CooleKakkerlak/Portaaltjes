@@ -65,4 +65,26 @@ public class MPlayer : PortalTraveller
             return;
         
     }
+    
+    [ClientRpc]
+    void OnSlapClientRpc(ulong nid)
+    {
+        if (IsClient && IsLocalPlayer && NetworkObjectId == nid)
+        {
+            IsTikker = true;
+        }
+        else
+        {
+            IsTikker = false;
+        }
+    }
+
+    [ServerRpc]
+    void OnSlapServerRpc(ulong nid)
+    {
+        if (IsServer)
+        {
+           OnSlapClientRpc(nid);
+        }
+    }
 }

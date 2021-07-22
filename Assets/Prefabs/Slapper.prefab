@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hand: {fileID: 5330915644854551253}
+  m_player: {fileID: 5199312408355705818}
 --- !u!1 &4234049254847445711
 GameObject:
   m_ObjectHideFlags: 0
