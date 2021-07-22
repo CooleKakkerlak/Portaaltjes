@@ -1070,7 +1070,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5330915645462216443}
   - component: {fileID: 5330915645465816961}
-  - component: {fileID: 5330915643392960661}
+  - component: {fileID: 172580071753732629}
+  - component: {fileID: 4409633621071442454}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Untagged
@@ -1190,8 +1191,8 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.051279515, y: -0.010891005, z: 0.00000020861626}
     m_Extent: {x: 0.46885136, y: 0.09929618, z: 0.27795073}
   m_DirtyAABB: 0
---- !u!64 &5330915643392960661
-MeshCollider:
+--- !u!136 &172580071753732629
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1200,10 +1201,26 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  m_Radius: 0.25
+  m_Height: 2.3817651
+  m_Direction: 1
+  m_Center: {x: -0.00000050247263, y: 1.1908013, z: -0.06446925}
+--- !u!54 &4409633621071442454
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5330915645462635227}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5330915645462635229
 GameObject:
   m_ObjectHideFlags: 0
@@ -1942,6 +1959,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Weapon
       objectReference: {fileID: 0}
+    - target: {fileID: 5284334545819347598, guid: b9f0af5e35d5ef44c97930a0d5703d12,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.03
+      objectReference: {fileID: 0}
     - target: {fileID: 5284334545970933169, guid: b9f0af5e35d5ef44c97930a0d5703d12,
         type: 3}
       propertyPath: m_TagString
@@ -2052,17 +2074,22 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Weapon
       objectReference: {fileID: 0}
+    - target: {fileID: 5284334547559644188, guid: b9f0af5e35d5ef44c97930a0d5703d12,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.03
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9f0af5e35d5ef44c97930a0d5703d12, type: 3}
---- !u!1 &49132559695081719 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5284334546962468806, guid: b9f0af5e35d5ef44c97930a0d5703d12,
-    type: 3}
-  m_PrefabInstance: {fileID: 5330915643954970417}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &49132557704384048 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5284334546213564673, guid: b9f0af5e35d5ef44c97930a0d5703d12,
+    type: 3}
+  m_PrefabInstance: {fileID: 5330915643954970417}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &49132559695081719 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5284334546962468806, guid: b9f0af5e35d5ef44c97930a0d5703d12,
     type: 3}
   m_PrefabInstance: {fileID: 5330915643954970417}
   m_PrefabAsset: {fileID: 0}

@@ -8,7 +8,6 @@ public class MPlayer : PortalTraveller
     public GameObject Hand;
     public bool IsTikker = true;
 
-
     public NetworkVariableVector3 Position = new NetworkVariableVector3(new NetworkVariableSettings
     {
         WritePermission = NetworkVariablePermission.ServerOnly,
@@ -39,6 +38,7 @@ public class MPlayer : PortalTraveller
             GetComponent<CharacterController>().enabled = false;
             GetComponent<HandControl>().enabled = false;
             Destroy(transform.Find("cam").gameObject);
+            transform.Find("soldier").tag = "Hittable";
             // Old character
             //GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
             //Destroy(transform.Find("FirstPersonCharacter").gameObject);
